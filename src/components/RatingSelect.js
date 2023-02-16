@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
-const RatingSelect = () => {
+const RatingSelect = ({ select }) => {
   const [selected, setSelected] = useState(10);
 
-  const handleChange = () => {
-    console.log('dupa');
+  const handleChange = (e) => {
+    setSelected(Number(e.target.value));
+    select(Number(e.target.value));
   };
 
   return (
@@ -111,6 +113,10 @@ const RatingSelect = () => {
       </li>
     </ul>
   );
+};
+
+RatingSelect.propTypes = {
+  select: PropTypes.func
 };
 
 export default RatingSelect;
